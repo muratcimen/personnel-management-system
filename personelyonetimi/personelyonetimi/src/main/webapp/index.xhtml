@@ -1,0 +1,154 @@
+<h:html xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Personel Yönetim Sistemi</title>
+        <link rel="stylesheet" href="https://unpkg.com/primeflex@^3/primeflex.css"/>
+    </h:head>
+    <h:body>
+        <div class="card">
+            <h:form id="calisan-form">
+                <p:growl id="mesaj" showDetail="true"/>
+
+                <div class="card">
+                    <p:menubar>
+                        <p:menuitem value="Çalışanlar" icon="pi pi-fw pi-user"
+                                    update=":calisan-form:calisan-tablo"
+                                    actionListener="#{indexController.veriGetir}"/>
+                        <p:menuitem value="Yeni Çalışan" icon="pi pi-fw pi-plus"
+                                    actionListener="#{indexController.yeniEkle}"
+                                    update=":modal-form:account-window"
+                                    oncomplete="PF('modalAccountwindow').show()"/>
+                        <p:menuitem value="Rapor" icon="pi pi-fw pi-plus" outcome="rapor"/>
+                    </p:menubar>
+                </div>
+                <div class="card">
+                    <div class="p-grid">
+                        <div class="p-col">
+                            <p:dataTable value="#{indexController.calisanList}" var="calisan"
+                                         id="calisan-tablo" lazy="false"
+                                         filteredValue="#{indexController.filteredCalisanList}"
+                                         paginator="true" rows="10" paginatorPosition="bottom">
+                                <f:facet name="header">
+                                    <div class="flex justify-content-center flex-wrap card-container yellow-container">
+                                        <div class="flex align-items-center justify-content-center w-20rem h-4rem bg-yellow-500 font-bold text-gray-900 border-round m-2">
+                                            <h3>Personel Yönetim Sistemi</h3>
+                                        </div>
+                                    </div>
+                                    <div class="p-grid p-align-center">
+                                        <div class="p-col">
+                                            <h3>Çalışan Tablosu</h3>
+                                        </div>
+                                    </div>
+                                </f:facet>
+                                <p:column headerText="Id" filterBy="#{calisan.calisanID}">
+                                    <h:outputText value="#{calisan.calisanID}"/>
+                                </p:column>
+                                <p:column headerText="Departman" filterBy="#{calisan.departman.adi}">
+                                    <h:outputText value="#{calisan.departman.adi}"/>
+                                </p:column>
+                                <p:column headerText="Ad" filterBy="#{calisan.adi}">
+                                    <h:outputText value="#{calisan.adi}"/>
+                                </p:column>
+                                <p:column headerText="Soyad" filterBy="#{calisan.soyadi}">
+                                    <h:outputText value="#{calisan.soyadi}"/>
+                                </p:column>
+                                <p:column headerText="Maaş" filterBy="#{calisan.maas}">
+                                    <h:outputText value="#{calisan.maas}">
+                                        <f:convertNumber type="currency" currencySymbol="$"/>
+                                    </h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="Güncelle" icon="pi pi-pencil"
+                                                     update=":modal-form:account-window"
+                                                     oncomplete="PF('modalAccountwindow').show()"
+                                                     process="@this"
+                                                     class="ui-button-primary"
+                                                     style="margin-right: .5rem">
+                                        <f:setPropertyActionListener
+                                                target="#{indexController.selectedCalisan}"
+                                                value="#{calisan}"/>
+                                        <p:resetInput target=":modal-form:account-window"/>
+                                    </p:commandButton>
+
+                                    <p:commandButton value="Sil" class="ui-button-danger"
+                                                     icon="pi pi-trash"
+                                                     process="@this"
+                                                     update=":modal-form:account-window"
+                                                     oncomplete="PF('deleteAccountWindow').show()">
+                                        <f:setPropertyActionListener
+                                                target="#{indexController.selectedCalisan}"
+                                                value="#{calisan}"/>
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>
+
+                        </div>
+                    </div>
+
+                </div>
+            </h:form>
+
+            <h:form id="modal-form">
+                <p:dialog header="Çalışan Detayları" showEffect="fade"
+                          modal="true" widgetVar="modalAccountwindow"
+                          resposive="true">
+                    <p:outputPanel id="account-window" class="ui-fluid">
+                        <div class="field">
+                            <p:outputLabel for="adi">Adı</p:outputLabel>
+                            <p:inputText id="adi"
+                                         value="#{indexController.selectedCalisan.adi}"
+                                         required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="soyadi">Soyad</p:outputLabel>
+                            <p:inputText id="soyadi"
+                                         value="#{indexController.selectedCalisan.soyadi}"
+                                         required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="departman">Departman</p:outputLabel>
+                            <p:selectOneMenu id="departman"
+                                             value="#{indexController.selectedCalisan.departman.adi}">
+                                <f:selectItem itemLabel="Seçiniz" noSelectionOption="true"/>
+                                <f:selectItem itemLabel="İK" itemValue="İnsan Kaynakları"/>
+                                <f:selectItem itemLabel="Muhasebe" itemValue="Muhasebe"/>
+                                <f:selectItem itemLabel="Satis" itemValue="Satiş"/>
+                            </p:selectOneMenu>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="maas">Maas</p:outputLabel>
+                            <p:inputNumber id="maas"
+                                           value="#{indexController.selectedCalisan.maas}"/>
+                        </div>
+                    </p:outputPanel>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Kaydet" icon="pi pi-check"
+                                         process="@form"
+                                         actionListener="#{indexController.kaydet}"
+                                         update=":calisan-form:calisan-tablo :calisan-form:mesaj"
+                        />
+                        <p:commandButton value="Geri" icon="pi pi-times"
+                                         onclick="PF('modalAccountwindow').hide()"
+                                         class="ui-button-secondary" type="button"/>
+                    </f:facet>
+                </p:dialog>
+
+                <p:confirmDialog widgetVar="deleteAccountWindow"
+                                 showEffect="fade" width="300"
+                                 message="Çalışan silinsin mi?"
+                                 header="Onaylıyor musunuz?" severity="warn">
+                    <p:commandButton value="Evet" icon="pi pi-check"
+                                     actionListener="#{indexController.sil}"
+                                     process="@this"
+                                     oncomplete="PF('deleteAccountWindow').hide()"/>
+                    <p:commandButton value="Hayır" type="button"
+                                     styleClass="ui-button-secondary"
+                                     icon="pi pi-times"
+                                     onclick="PF('deleteAccountWindow').hide()"/>
+                </p:confirmDialog>
+            </h:form>
+        </div>
+    </h:body>
+</h:html>
