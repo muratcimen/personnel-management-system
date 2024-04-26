@@ -32,7 +32,7 @@ Sayfanın üst kısmında bir menü çubuğu bulunmaktadır.
 ## DataBase
 ![image](https://github.com/muratcimen/personnel-management-system/assets/41141844/51d79ed8-1a75-40ba-8bd2-6658c8a14e1a)
 
-Proje için SQL scriptlerine [buradan](<script>) indirebilirsiniz.
+Proje için SQL scriptlerine [buradan](personelyonetimi/src/main/resources/script/personnelmanagement.sql) indirebilirsiniz.
 ## İletişim
 
 - **Website:** [www.muratcimen.com](https://www.muratcimen.com/)
