@@ -9,30 +9,30 @@ Sayfanın üst kısmında bir menü çubuğu bulunmaktadır.
 *  Tüm çalışanları listelemek için.
 ### Yeni Çalışan
 *  Yeni bir çalışan eklemek için modal pencereyi açar.
-![Ekran görüntüsü 2024-04-26 110623](https://github.com/muratcimen/personelmanagementsystem/assets/41141844/723d0f29-1c7b-4e30-b7df-da7ae1b7f62a)
+![Ekran görüntüsü 2024-04-26 110623](https://github.com/muratcimen/personnel-management-system/assets/41141844/bc0836c1-222c-4d34-b29a-b73868c1550d)
 ### Rapor 
 *  Rapor sayfasına gitmek için.
-![4](https://github.com/muratcimen/personelmanagementsystem/assets/41141844/44b6931a-eccb-4d3b-9bfc-6dec2f6818d4)
-![image](https://github.com/muratcimen/personelmanagementsystem/assets/41141844/7481f580-9ae0-4a10-805a-8cca6e459d52)
+![4](https://github.com/muratcimen/personnel-management-system/assets/41141844/ee4d09d3-4c36-424a-b39f-f54132bdb370)
+![image](https://github.com/muratcimen/personnel-management-system/assets/41141844/44e57669-e6f3-46ee-9823-bec444a642cc)
 ## Çalışan Tablosu
 *  DataTable bileşeni kullanılarak çalışanların listelendiği bir tablo oluşturulmuştur. 
-![image](https://github.com/muratcimen/personelmanagementsystem/assets/41141844/f7909294-957e-4d49-8930-91d30b7efc15)
+![image](https://github.com/muratcimen/personnel-management-system/assets/41141844/3cfa6fe9-c35f-4b6c-9237-23e7cfc46ad6)
 *  DataTable bileşenine filtreleme ve sayfalama özellikleri eklenmiştir.
-![image](https://github.com/muratcimen/personelmanagementsystem/assets/41141844/eef5da95-de62-44c3-957b-7735d68829bd)
-![image](https://github.com/muratcimen/personelmanagementsystem/assets/41141844/bc0aee1c-a5f4-4346-9710-8ae2a90c8761)
+![image](https://github.com/muratcimen/personnel-management-system/assets/41141844/aefcf66e-d114-420d-89f3-59ed963e2930)
+![image](https://github.com/muratcimen/personnel-management-system/assets/41141844/08a0c145-6d8b-42cb-b67f-e4c48142fff2)
 *  Seçilen çalışanın detaylarının düzenlenebileceği bir modal pencere bulunmaktadır.
-![2](https://github.com/muratcimen/personelmanagementsystem/assets/41141844/bb7a9480-0d70-42fc-824c-34dc7a0b8d13)
+![2](https://github.com/muratcimen/personnel-management-system/assets/41141844/0dc15283-9c77-4c7a-93e0-f037380ac53b)
 *  Modal pencerede çalışanın adı, soyadı, departmanı ve maaşı düzenlenebilir.
 *  Çalışanın silinmesi için bir onay penceresi bulunmaktadır.
-![3](https://github.com/muratcimen/personelmanagementsystem/assets/41141844/e4723ff9-023f-4333-93aa-bea924b701d0)
-![image](https://github.com/muratcimen/personelmanagementsystem/assets/41141844/f1c329f9-d7ec-4f81-8cd5-a029c6c6aa32)
-
+![3](https://github.com/muratcimen/personnel-management-system/assets/41141844/ae9ac68f-ce14-4442-bebe-dc5515b9f6b4)
 ## Swagger UI
 * "Departman" verilerini işlemek için RESTful API kullanılmış ve bu API'nin belgelenmesi ve test edilmesi için Swagger UI kullanılmıştır.
-![image](https://github.com/muratcimen/personelmanagementsystem/assets/41141844/dd1f3ae3-dd23-4a74-a19a-a3d178381e98)
-## DataBase
-![image](https://github.com/muratcimen/personelmanagementsystem/assets/41141844/231bdd8a-aa04-4e5d-bc72-a8a29378a6f0)
+![image](https://github.com/muratcimen/personnel-management-system/assets/41141844/ac1e782b-f4a9-4089-b06b-14558a75ade3)
 
+## DataBase
+![image](https://github.com/muratcimen/personnel-management-system/assets/41141844/51d79ed8-1a75-40ba-8bd2-6658c8a14e1a)
+
+Proje için SQL scriptlerine [buradan](<>) indirebilirsiniz.
 ## İletişim
 
 - **Website:** [www.muratcimen.com](https://www.muratcimen.com/)
