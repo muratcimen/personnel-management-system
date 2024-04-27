@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Departman İstatistikleri</title>
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@^3/primeflex.css"/>
+</h:head>
+<h:body>
+    <h:form>
+        <p:dataTable value="#{raporController.departmanList}" var="departman"
+                     id="rapor-tablo">
+            <f:facet name="header">
+                <h:outputText value="Departman İstatistikleri"/>
+            </f:facet>
+            <p:column headerText="Departman" sortBy="#{departman}">
+                <h:outputText value="#{departman}"/>
+            </p:column>
+            <p:column headerText="Çalışan Sayısı">
+                <h:outputText value="#{raporController.calisanSayisi(departman)}"/>
+            </p:column>
+            <p:column headerText="Ortalama Maaş">
+                <h:outputText value="#{raporController.departmanOrtalamaMaas(departman)}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</h:body>
+</html>
